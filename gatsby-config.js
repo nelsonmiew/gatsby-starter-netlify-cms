@@ -6,7 +6,12 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+          indentedSyntax: true
+      },
+    },    
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
@@ -72,6 +77,16 @@ module.exports = {
         purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
       },
     }, // must be after other CSS plugins
+    {
+      resolve: "gatsby-source-graphql",
+      options: {        
+        name: "bmcarApi",        
+        typeName: "bmcarApi",        
+        fieldName: "bmcarApi",        
+        url: "https://bmcar-api.out.miewstudio.com/graphql",
+        batch: true,
+      },
+    },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }
