@@ -1,7 +1,7 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
-import { ImgPlaceholder } from "src/components/GlobalComponents";
+// import { graphql, useStaticQuery } from "gatsby";
+// import { GatsbyImage } from "gatsby-plugin-image";
+// import { ImgPlaceholder } from "src/components/GlobalComponents";
 
 const ImageProduct = ({ slug, originalSrc, altImage, aspectRatioW, aspectRatioH, objectFit, imageRef, ...props }) => {
   

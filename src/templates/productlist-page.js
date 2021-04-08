@@ -47,9 +47,10 @@ export const ProductListPageTemplate = ({
               <p>{description}</p>
             </div>
           </div>
-        <ProductList />
+       
       </div>
       </div>
+      <ProductList />
     </section>
   </div>
 )}
@@ -80,7 +81,7 @@ ProductListPageTemplate.propTypes = {
 
 const ProductListPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
-
+  console.log("frontmatter", frontmatter);
   return (
     <Layout>
       <ProductListPageTemplate

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "gatsby";
-import config from "src/services/config";
+
 import { EuroFormat2Decimals } from "../Helpers/valuesFormatters";
 import ImageProduct from "./ImageProduct";
 
-export class CardProduct extends Component {
+class CardProduct extends Component {
   constructor(props) {
     super(props);
     this.cardImageRef = React.createRef();
@@ -72,7 +72,7 @@ export class CardProduct extends Component {
       className
     } = this.props;
     
-    const api = config.apiUrl.substring(0, config.apiUrl.length - 1);
+    const api = "";// config.apiUrl.substring(0, config.apiUrl.length - 1);
     const imageExt = imageUrl ? imageUrl.substring(imageUrl.lastIndexOf("."), imageUrl.length) : "";
     const productIMG = imageUrl ? api + imageUrl.replace(imageExt, ".thumb" + imageExt) : "";
 
