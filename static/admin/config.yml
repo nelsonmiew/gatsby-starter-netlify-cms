@@ -8,6 +8,8 @@ backend:
     uploadMedia: '[skip ci] Upload “{{path}}”'
     deleteMedia: '[skip ci] Delete “{{path}}”'
 
+local_backend: true
+
 media_folder: static/img
 public_folder: /img
 
@@ -69,6 +71,7 @@ collections:
         name: "productList"
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "productlist-page"}
+          - {label: Image, name: image, widget: image}
           - {label: "Title", name: "title", widget: string}
           - {label: Heading, name: heading, widget: string}
           - {label: Description, name: description, widget: string}
