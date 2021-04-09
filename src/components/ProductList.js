@@ -4,43 +4,45 @@ import { StaticQuery, graphql } from "gatsby";
 import CardProduct from './Catalog/CardProduct';
 
 export default class ProductList extends Component {
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-            gdata: undefined
-        }
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      gdata: undefined
     }
-    
-    render() {
-        const {gdata} = this.state;
-        const catalogProducts = (gdata && gdata.bmcarApi && gdata.bmcarApi.products) || [];
-        const limitProducts = 20;
+  }
 
-        const category = "";
-        const categoryPath = "";
+  render() {
+    const { gdata } = this.state;
+    const catalogProducts = (gdata && gdata.bmcarApi && gdata.bmcarApi.products.slice(0, 10)) || [];
+    const limitProducts = 20;
+
+    const category = "";
+    const categoryPath = "";
 
 
-        return (
-            <div>
-                <StaticQuery
-      query={graphql`
-      query {            
-        bmcarApi {
-          products {
-            name
-            price
-            hasStock
-          }
+    return (
+      <div>
+        <StaticQuery
+          query={graphql`
+          query {            
+            bmcarApi {
+              products {
+                name
+                price
+                hasStock
+                imageProductUrl
+                slug
+              }
+            }
         }
-    }
-      `}
-      render={(data) => {
-          console.log("gdata", data)
-          if (!this.state.gdata)  this.setState({"gdata": data})
-        }}
-    />
-           
+        `}
+          render={(data) => {
+            console.log("gdata", data);
+            
+        const catalogProducts = (data && data.bmcarApi && data.bmcarApi.products.slice(0, 10)) || [];
+
+            return (
               <div className="columns is-multiline">
                 {catalogProducts &&
                   catalogProducts.map((product, i) => (
@@ -51,7 +53,7 @@ export default class ProductList extends Component {
                             className={"column is-4 " + (i % 2 === 1 ? "pl-1 pl-xl-2" : "pr-1 pr-xl-2")}
                             key={"product-" + product.id}
                           >
-                              
+
                             <CardProduct
                               className="h-100"
                               productId={product.id}
@@ -75,10 +77,16 @@ export default class ProductList extends Component {
                     </Fragment>
                   ))}
               </div>
-            </div>
-           
-        )
-    }
+            )
+          }}
+
+        />
+
+
+
+      </div>
+    )
+  }
 }
 
 

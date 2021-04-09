@@ -1,13 +1,10 @@
 import React from "react";
-// import { graphql, useStaticQuery } from "gatsby";
-// import { GatsbyImage } from "gatsby-plugin-image";
+ import { graphql, useStaticQuery } from "gatsby";
+ import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 // import { ImgPlaceholder } from "src/components/GlobalComponents";
 
 const ImageProduct = ({ slug, originalSrc, altImage, aspectRatioW, aspectRatioH, objectFit, imageRef, ...props }) => {
-  
-return (<><h1>Image</h1></>);
-
-//   const data = useStaticQuery(graphql`
+//     const data = useStaticQuery(graphql`
 //     query {
 //       allSitePage(filter: { id: { regex: "SitePage /" } }) {
 //         edges {
@@ -23,6 +20,15 @@ return (<><h1>Image</h1></>);
 //       }
 //     }
 //   `);
+    
+    const width = 300;
+    console.log("ImageProduct", altImage, originalSrc);
+    if (true || !originalSrc) return <></>;
+    return (<StaticImage  src={originalSrc} width={width} alt="ola" />)
+}
+//return (<><h1>Image</h1></>);
+
+
 
 //   const edge =
 //     data.allSitePage && data.allSitePage.edges && data.allSitePage.edges.find((e) => e.node.path === "/" + slug + "/");
@@ -51,6 +57,6 @@ return (<><h1>Image</h1></>);
 //       </picture>
 //     );
 //   }
-};
+//};
 
 export default ImageProduct;

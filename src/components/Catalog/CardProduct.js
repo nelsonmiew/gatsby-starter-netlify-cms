@@ -72,7 +72,7 @@ class CardProduct extends Component {
       className
     } = this.props;
     
-    const api = "";// config.apiUrl.substring(0, config.apiUrl.length - 1);
+    const api = "https://bmcar-api.out.miewstudio.com";// config.apiUrl.substring(0, config.apiUrl.length - 1);
     const imageExt = imageUrl ? imageUrl.substring(imageUrl.lastIndexOf("."), imageUrl.length) : "";
     const productIMG = imageUrl ? api + imageUrl.replace(imageExt, ".thumb" + imageExt) : "";
 
