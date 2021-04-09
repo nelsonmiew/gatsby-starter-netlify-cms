@@ -6,12 +6,22 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`, // Needed for dynamic images
     {
       resolve: 'gatsby-plugin-sass',
       options: {
           indentedSyntax: true
       },
     },    
+    {
+      resolve: `gatsby-transformer-rehype`,
+      options: {
+        filter: (node) => node.internal.type === `SitePage`,
+        source: (node) => node.context && node.context.product && node.context.product.descriptionDetail,
+      },
+    },
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
@@ -34,6 +44,7 @@ module.exports = {
         name: 'images',
       },
     },
+    
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
