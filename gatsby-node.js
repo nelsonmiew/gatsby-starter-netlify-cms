@@ -1,7 +1,9 @@
 const _ = require('lodash')
 const path = require('path')
-const { createFilePath } = require('gatsby-source-filesystem')
+const { createFilePath ,createRemoteFileNode } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const slash = require(`slash`);
+const API_URL = "https://bmcar-api.out.miewstudio.com/";
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
@@ -9,6 +11,84 @@ exports.createPages = async ({ actions, graphql }) => {
   return graphql(`
     {
       bmcarApi {        
+        categories {
+          attributes {
+            id
+            name
+            attributesValue {
+              id
+              name
+              colorTypeCode
+              colorTypeId
+            }
+          }
+          id
+          level
+          name
+          slug
+          path
+          numberProducts
+          categories {
+            attributes {
+              id
+              name
+              attributesValue {
+                id
+                name
+                colorTypeCode
+                colorTypeId
+              }
+            }
+            categories {
+              attributes {
+                id
+                name
+                attributesValue {
+                  id
+                  name
+                  colorTypeCode
+                  colorTypeId
+                }
+              }
+              categories {
+                attributes {
+                  id
+                  name
+                  attributesValue {
+                    id
+                    name
+                    colorTypeCode
+                    colorTypeId
+                  }
+                }
+                id
+                level
+                name
+                slug
+                path
+                numberProducts
+                seoTitle
+                seoDescription
+              }
+              id
+              level
+              name
+              slug
+              path
+              numberProducts
+              seoTitle
+              seoDescription
+            }
+            id
+            name
+            level
+            slug
+            path
+            numberProducts
+            seoTitle
+            seoDescription
+          }
+        }
         products {
           attributesVariable {
             id
@@ -150,8 +230,8 @@ exports.createPages = async ({ actions, graphql }) => {
   })
 }
 
-exports.onCreateNode =async  ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+exports.onCreateNode =async  ({ node,  actions,getCache, getNode, createNodeId, store }) => {
+  const { createNodeField, createNode } = actions;
   fmImagesToRelative(node) // convert image paths for gatsby images
 
   if (node.internal.type === `MarkdownRemark`) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import config from "src/services/config";
+//import config from "src/services/config";
 
 const formatDate = (date) => {
   var d = new Date(date),
@@ -14,7 +14,7 @@ const formatDate = (date) => {
   return [year, month, day].join("-");
 };
 
-const API_URL = config.apiUrl.substring(0, config.apiUrl.length - 1);
+const API_URL = "https://bmcar-api.out.miewstudio.com/";
 
 const ProductPage = ({ pageContext, location, data }) => {
     return <h1>{"pag. produto"}</h1>
