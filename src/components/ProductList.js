@@ -42,7 +42,7 @@ export default class ProductList extends Component {
         }
         `}
           render={(data) => {
-            console.log("data", data);
+            //console.log("data", data);
             const catalogProducts = (data && data.bmcarApi && data.bmcarApi.products.slice(0, 10)) || [];
             return (
               <div className="columns is-multiline">

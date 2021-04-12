@@ -57,7 +57,6 @@ const StoreRouter = ({ pageContext, isToOpenShoppingCart, observer }) => {
 };
 
 const StorePage = ({ pageContext, location }) => {
-  console.log("StorePage", pageContext);
   return (
     
     <Layout>

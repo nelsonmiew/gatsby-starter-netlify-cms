@@ -22,7 +22,7 @@ export class index extends Component {
       limitProducts: props.lastLimitProducts || 20,
       catalogProducts: props.products || [],
     };
-    console.log(props);
+   // console.log(props);
     this.toggleFilters = this.toggleFilters.bind(this);
   }
 
