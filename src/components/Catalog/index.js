@@ -283,8 +283,8 @@ export class index extends Component {
     return (
       <div className="page-content pb-adapt-7">
         <div className="container">
-          <div className="row columns is-multiline">
-            <div className="column is-12 col-12 mb-3 d-block d-lg-flex">
+          <div className="row columns ">
+            <div className="column is-12 is-full-mobile col-12 mb-3 d-block d-lg-flex">
               <h2 className="font-weight-bold h4">
                 {category ? category.name : "Catálogo"}
                 <span className="texts text-muted ml-2">{"(" + (catalogProducts || []).length + ")"}</span>
@@ -314,7 +314,7 @@ export class index extends Component {
             </div>
             <div
               className={ 
-                "column is-3 col-12 col-lg-3 col-xxl-2 filters-container d-flex flex-column h-100 p-0" +
+                "column is-3 is-full-mobile col-12 col-lg-3 col-xxl-2 filters-container d-flex flex-column h-100 p-0" +
                 (filtersIsOpen ? " open" : "")
               }
             >
@@ -472,7 +472,7 @@ export class index extends Component {
               </div>
             </div>
             <div className="column col-12 col-lg-9 col-xxl-10">
-              <div className="row columns is-multiline">
+              <div className="row columns is-multiline is-mobile is-tablet is-desktop is-fullhd">
                 {catalogProducts &&
                   catalogProducts.map((product, i) => (
                     <Fragment key={"product-lst-" + i}>
@@ -488,7 +488,7 @@ export class index extends Component {
                           )} */}
 
                           <div
-                            className={"column is-4  col-6 col-xl-4  mb-adapt-4 " + (i % 2 === 1 ? "pl-1 pl-xl-2" : "pr-1 pr-xl-2")}
+                            className={"column is-6-mobile is-3-tablet is-3-desktop is-3-fullhd  col-6 col-xl-4  mb-adapt-4 " + (i % 2 === 1 ? "pl-1 pl-xl-2" : "pr-1 pr-xl-2")}
                             key={"product-" + product.id}
                           >
                        
