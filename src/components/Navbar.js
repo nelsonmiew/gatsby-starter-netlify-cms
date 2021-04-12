@@ -35,11 +35,11 @@ const Navbar = class extends React.Component {
   render() {
     return (
       <nav
-        className="navbar is-transparent"
+        className="navbar is-transparent  is-fixed-top app-header"
         role="navigation"
         aria-label="main-navigation"
       >
-        <div className="container">
+        <div className="container header-bar">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
               <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
