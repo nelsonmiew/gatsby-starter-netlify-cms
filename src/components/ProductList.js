@@ -33,6 +33,10 @@ export default class ProductList extends Component {
                 hasStock
                 imageProductUrl
                 slug
+                mainCategory {
+                  name
+                  slugSimple
+                }
               }
             }
         }
