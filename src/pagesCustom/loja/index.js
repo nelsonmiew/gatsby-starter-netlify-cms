@@ -1,9 +1,8 @@
 import React from "react";
-import Layout from "../../components/Layout";
- import Catalog from "../../components/Catalog";
-import Seo from "../../components/Seo";
-import LayoutStore from "../../components/LayoutStore";
-import ReduxProvider from '../../redux/ReduxProvider';
+import Layout from "components/Layout";
+import Catalog from "src/components/Catalog";
+import Seo from "src/components/Seo";
+import LayoutStore from "src/components/LayoutStore";
 
 const CategoryPage = ({
   name,
@@ -17,9 +16,9 @@ const CategoryPage = ({
   filters,
 }) => {
   return (
-    <ReduxProvider>
+    <>
       <Seo
-        title={name || "A verdadeira Loja de Acessórios"}
+        title={name || "BMcar - Loja de Acessórios"}
         facebookImage={"https://bmcar-wp.prod.miewstudio.com/wp-content/uploads/2020/04/explorar-scaled.jpg"}
       />
       <LayoutStore
@@ -38,7 +37,7 @@ const CategoryPage = ({
           observer={observer}
         />
       </LayoutStore>
-    </ReduxProvider>
+    </>
   );
 };
 
@@ -57,7 +56,6 @@ const StoreRouter = ({ pageContext, isToOpenShoppingCart, observer }) => {
 
 const StorePage = ({ pageContext, location }) => {
   return (
-
     <Layout>
       <StoreRouter
         pageContext={pageContext}

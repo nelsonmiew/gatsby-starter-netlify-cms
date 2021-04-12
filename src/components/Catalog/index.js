@@ -20,9 +20,9 @@ export class index extends Component {
     this.state = {
       filtersIsOpen: false,
       limitProducts: props.lastLimitProducts || 20,
-      catalogProducts: props.products,
+      catalogProducts: props.products || [],
     };
-
+    console.log(props);
     this.toggleFilters = this.toggleFilters.bind(this);
   }
 
@@ -141,7 +141,7 @@ export class index extends Component {
             );
           })
         : products;
-
+          
     const productsSorted = orderByProperty
       ? productsFiltered.sort((a, b) => orderBy(a, b, orderByProperty))
       : productsFiltered;
@@ -283,11 +283,11 @@ export class index extends Component {
     return (
       <div className="page-content pb-adapt-7">
         <div className="container">
-          <div className="row">
-            <div className="col-12 mb-3 d-block d-lg-flex">
+          <div className="row columns is-multiline">
+            <div className="column is-12 col-12 mb-3 d-block d-lg-flex">
               <h2 className="font-weight-bold h4">
                 {category ? category.name : "Catálogo"}
-                <span className="texts text-muted ml-2">{"(" + catalogProducts.length + ")"}</span>
+                <span className="texts text-muted ml-2">{"(" + (catalogProducts || []).length + ")"}</span>
               </h2>
               <div className="d-flex d-lg-none filters-toggle mt-2">
                 <Sticky top={108} innerClass={"shadow-sm"} className="w-100">
@@ -313,8 +313,8 @@ export class index extends Component {
               <div className="d-none d-lg-block ml-auto mr-0">{orderField()}</div>
             </div>
             <div
-              className={
-                "col-12 col-lg-3 col-xxl-2 filters-container d-flex flex-column h-100 p-0" +
+              className={ 
+                "column is-3 col-12 col-lg-3 col-xxl-2 filters-container d-flex flex-column h-100 p-0" +
                 (filtersIsOpen ? " open" : "")
               }
             >
@@ -471,8 +471,8 @@ export class index extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-lg-9 col-xxl-10">
-              <div className="row">
+            <div className="column col-12 col-lg-9 col-xxl-10">
+              <div className="row columns is-multiline">
                 {catalogProducts &&
                   catalogProducts.map((product, i) => (
                     <Fragment key={"product-lst-" + i}>
@@ -488,9 +488,10 @@ export class index extends Component {
                           )} */}
 
                           <div
-                            className={"col-6 col-xl-4 mb-adapt-4 " + (i % 2 === 1 ? "pl-1 pl-xl-2" : "pr-1 pr-xl-2")}
+                            className={"column is-4  col-6 col-xl-4  mb-adapt-4 " + (i % 2 === 1 ? "pl-1 pl-xl-2" : "pr-1 pr-xl-2")}
                             key={"product-" + product.id}
                           >
+                       
                             <CardProduct
                               className="h-100"
                               productId={product.id}
@@ -605,5 +606,20 @@ const mapStateToProps = (state, props) => {
     },
   };
 };
-export default index;
+//export default index;
+index = reduxForm({
+  form: FORM_NAME,
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: false,
+})(index);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    doChange: (y, z) => dispatch(change(FORM_NAME, y, z)),
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(index);
+
 

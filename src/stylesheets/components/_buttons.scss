@@ -1,0 +1,137 @@
+.button,
+.button-big{
+  display:inline-block;
+  vertical-align: top;
+
+	width: auto !important;
+	outline: none !important;
+	border: 0 !important;
+	z-index: 10;
+
+	transition: all 0.5s ease;
+	
+	& i{
+		display:inline-block;
+    	vertical-align: middle;
+		margin-left: 10px !important;
+		font-size: 10px;
+		margin-top: -1px;
+   		color: inherit !important;
+  
+    	transition: none;
+	}
+}
+.button{
+	position:relative;
+	background-color:transparent !important;
+
+	color: $secondary;
+	@include textos(listing_text, null, null, 600);
+	letter-spacing:0 !important;
+
+	.style-dark &{
+		color: $white;
+	}
+
+	&:hover{
+		color: $primary !important;
+	}
+	&.button-white:hover {
+		color: $wisteria !important;
+	}
+}
+.button-big{
+	position: relative;
+	height: auto;
+	text-align: center !important;
+	outline: none !important;
+
+	color: $white !important;
+	@include textos(listing_text, null, null, 700);
+	letter-spacing: 0;
+
+	background:$primary !important;
+
+	padding:10px 20px !important;
+	border-radius: 5px !important;
+	border: 1px solid transparent !important;
+	min-width: 135px;
+
+	overflow: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	transition: all 0.5s ease;
+	
+	&:hover{
+		background:rgba($primary, 0.6) !important;
+		color:$white !important;
+	}
+
+	&.invert{
+		background:$secondary !important;
+
+		&:hover{
+			background: $primary !important;
+		}
+	}
+	&.secondary{
+		color: $secondary !important;
+		border: solid 1px $wisteria !important;
+		background:transparent !important;
+
+		&:hover{
+			background: $wisteria !important;
+		}
+	}
+}
+
+.clear-button {
+  color:$error-color !important;
+  @include textos(listing_small, null, 1);
+	opacity:0.4;
+	
+	pointer-events:none !important;
+	cursor: not-allowed !important;
+
+	&.changed {
+		opacity:1;
+		pointer-events:auto !important;
+		cursor: pointer !important;
+	}
+
+  &:hover{
+    color:$primary;
+  }
+}
+
+.button-call {
+	animation: button-pulse 2s infinite cubic-bezier(.66, 0, 0, 1);
+	box-shadow: 0 0 0 0 rgba(#333333, .65) !important;
+}
+
+.button-call:hover {
+	animation: button-pulse-green 2s infinite cubic-bezier(.66, 0, 0, 1);
+	box-shadow: 0 0 0 0 rgba(#25D366, .35) !important;
+	border-color: #25D366;
+	background-color: #25D366;
+}
+
+.btn-outline-light.text-white {
+	&:hover {
+		color: $dark-grey !important;
+	}
+}
+
+@keyframes button-pulse {
+	to {
+	  box-shadow: 0 0 10px 15px rgba(#333333, 0);
+	}
+}
+
+@keyframes button-pulse-green {
+	to {
+	  box-shadow: 0 0 10px 15px rgba(#25D366, 0);
+	}
+}
+

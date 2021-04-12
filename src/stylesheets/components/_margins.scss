@@ -1,0 +1,79 @@
+$margin-breakpoints: (
+  xs: 0,
+  lg: 992px,
+);
+
+
+@each $breakpoint in map-keys($margin-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $margin-breakpoints);
+
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size, $length in $spacers_adapt {
+        $value: map-get($length, size);
+        $range: map-get($length, range);
+
+        .#{$abbrev}-adapt#{$infix}-#{$size} { 
+					#{$prop}: #{$value}px !important; 
+					@if $range>0{
+            #{$prop}: calc(( #{$value}px - #{$range}px ) + #{$range} * (100vw - #{$globalMedia}px) / (1920 - #{$globalMedia})) !important;
+          }
+				}
+        .#{$abbrev}t-adapt#{$infix}-#{$size}{
+          #{$prop}-top: #{$value}px !important;
+          @if $range>0{
+            #{$prop}-top: calc(( #{$value}px - #{$range}px ) + #{$range} * (100vw - #{$globalMedia}px) / (1920 - #{$globalMedia})) !important;
+          }
+        }
+        .#{$abbrev}r-adapt#{$infix}-#{$size}{
+          #{$prop}-right: #{$value}px !important;
+          @if $range>0{
+            #{$prop}-right: calc(( #{$value}px - #{$range}px ) + #{$range} * (100vw - #{$globalMedia}px) / (1920 - #{$globalMedia})) !important;
+          }
+        }
+        .#{$abbrev}b-adapt#{$infix}-#{$size}{
+          #{$prop}-bottom: #{$value}px !important;
+          @if $range>0{
+            #{$prop}-bottom: calc(( #{$value}px - #{$range}px ) + #{$range} * (100vw - #{$globalMedia}px) / (1920 - #{$globalMedia})) !important;
+          }
+        }
+        .#{$abbrev}l-adapt#{$infix}-#{$size}{
+          #{$prop}-left: #{$value}px !important;
+          @if $range>0{
+            #{$prop}-left: calc(( #{$value}px - #{$range}px ) + #{$range} * (100vw - #{$globalMedia}px) / (1920 - #{$globalMedia})) !important;
+          }
+        }
+      }
+    }
+    
+    @each $size, $length in $spacers_adapt {
+      $value: map-get($length, size);
+      $range: map-get($length, range);
+
+      .mt-neg-adapt#{$infix}-#{$size}{
+        margin-top: -#{$value}px !important;
+        @if $range>0{
+          margin-top: calc((( #{$value}px - #{$range}px ) + #{$range} * (100vw - #{$globalMedia}px) / (1920 - #{$globalMedia})) * -1) !important;
+        }
+      }
+      .mr-neg-adapt#{$infix}-#{$size}{
+        margin-right: -#{$value}px !important;
+        @if $range>0{
+          margin-right: calc((( #{$value}px - #{$range}px ) + #{$range} * (100vw - #{$globalMedia}px) / (1920 - #{$globalMedia})) * -1) !important;
+        }
+      }
+      .mb-neg-adapt#{$infix}-#{$size}{
+        margin-bottom: -#{$value}px !important;
+        @if $range>0{
+          margin-bottom: calc((( #{$value}px - #{$range}px ) + #{$range} * (100vw - #{$globalMedia}px) / (1920 - #{$globalMedia})) * -1) !important;
+        }
+      }
+      .ml-neg-adapt#{$infix}-#{$size}{
+        margin-left: -#{$value}px !important;
+        @if $range>0{
+          margin-left: calc((( #{$value}px - #{$range}px ) + #{$range} * (100vw - #{$globalMedia}px) / (1920 - #{$globalMedia})) * -1) !important;
+        }
+      }
+    }  
+  }
+}

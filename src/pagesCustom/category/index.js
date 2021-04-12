@@ -17,7 +17,7 @@ const formatDate = (date) => {
 const API_URL = "https://bmcar-api.out.miewstudio.com/";
 
 const ProductPage = ({ pageContext, location, data }) => {
-    return <h1>{"pag. produto"}</h1>
+    return <h1>{"pag. categoria"}</h1>
 //   return (
 //     <>
 //       <Layout title={pageContext.product.name}>
@@ -114,7 +114,7 @@ export default ProductPage;
 
 /* eslint-disable */
 export const query = graphql`
-  query ProductQuery($path: String) {
+  query CategoryQuery($path: String) {
     sitePage(path: { eq: $path }) {
       childHtmlRehype {
         htmlAst

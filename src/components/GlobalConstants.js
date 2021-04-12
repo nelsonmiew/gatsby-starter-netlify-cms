@@ -18,7 +18,7 @@ export const STORE_PATH = "/loja/";
 export const PRODUCT_CHECKOUT_PATH = "checkout/";
 export const PRODUCT_CHECKOUT_SUCCESS_PATH = "checkout-com-sucesso/";
 
-const config = {
+export const config = {
     apiUrl: "https://bmcar-api.out.miewstudio.com/"
 }
 

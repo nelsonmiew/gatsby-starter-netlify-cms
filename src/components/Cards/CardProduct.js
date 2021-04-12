@@ -96,8 +96,8 @@ export class CardProduct extends Component {
               slug={(mainCategory? mainCategory.slugSimple + "/": "") + slug}
               altImage={name}
               originalSrc={productIMG}
-              aspectRatioW={1024}
-              aspectRatioH={664}
+              // aspectRatioW={1024}
+              // aspectRatioH={664}
               imageRef={this.cardImageRef}
               // fadeIn={false}
             />
@@ -141,7 +141,7 @@ const mapStateToProps = (state, props) => {
   const { productId } = props;
 
   return {
-    isFavourite: productId && account.favoritesIds && account.favoritesIds.indexOf(productId) >= 0,
+    isFavourite: false//productId && account.favoritesIds && account.favoritesIds.indexOf(productId) >= 0,
   };
 };
 

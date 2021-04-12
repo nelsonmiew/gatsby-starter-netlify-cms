@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "gatsby";
 // import config from "src/services/config";
-import { config } from "../GlobalConstants";
+import { config } from "../../GlobalConstants";
 
 import { EuroFormat2Decimals } from "src/components/Helpers/valuesFormatters";
 import ImageProduct from "src/components/Product/components/ImageProduct";

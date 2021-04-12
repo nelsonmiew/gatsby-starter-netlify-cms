@@ -1,0 +1,130 @@
+.vehicle-gallery{
+  .favourites{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    
+    color:$white;
+    font-size:22px;
+    z-index: 5;
+    cursor: pointer;
+
+    &:hover,
+    &.fa-heart{
+      color:$error-color;
+    }
+  }
+  & .slide .has_bg{
+    background-color: $white;
+  }
+}
+.vechicle-attributes{
+  padding: 5px 0;
+  border-bottom: 1px solid $light-grey;
+}
+.vehicle-gallery-slider {
+  & .slick-list{
+    padding: 0 !important;
+  }
+  .react_lightgallery_item{
+    cursor:pointer;
+  }
+}
+.vehicle-summary{
+  box-shadow: -44px 66px 66px 0 rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+.vehicle-resume{
+  border-radius: 8px;
+  box-shadow: 2px 2px 9px 0 rgba(0, 0, 0, 0.31);
+  overflow: hidden;
+
+  // & .bg-dark:after{
+  //   content: '';
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   width: 110px;
+  //   height: 100%;
+
+  //   border-top-left-radius: 50px;
+  //   background: #3e4145;
+  // }
+
+  & .save-resume{
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    color: $white;
+    font-size: 35px;
+    background-color: transparent;
+    outline: 0 !important;
+    z-index: 1;
+  }
+}
+.vehicle-page-bottomBar{
+  top: auto !important;
+  bottom: 0;
+  z-index: 300;
+
+  & .listing_small{
+    color:$white !important;
+  }
+
+  & .old-price {
+    text-decoration: line-through !important;
+  }
+}
+
+
+.payment-resume{
+  .row{
+    margin-bottom:5px;
+
+    & .listing_small{
+      line-height:1.2 !important;
+    }
+  }
+}
+
+.vehicle-box-call {
+  border-radius: 8px;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+}
+
+@include media-breakpoint-up(lg) {
+  .vehicle-gallery{
+    .favourites{
+      right: 24%;
+      margin-right: 30px;
+    }
+    .vehicle-gallery-slider {
+      & .slick-list{
+        padding-left:0 !important;
+        padding: 0px 24% 0 0 !important;
+      }
+    
+      .slick-slide{
+        border-right: 2px solid $white;
+        z-index: -1;
+
+        transition: all 0.4s ease;
+        
+        &.slick-current{
+          z-index: 2;
+        }
+      }
+    }
+  }
+}
+
+
+
+@include media-breakpoint-up(lg) {
+  .vehicle-resume{
+    position: absolute;
+    left:8px;
+    right:8px;
+    bottom:16px;
+  }
+}

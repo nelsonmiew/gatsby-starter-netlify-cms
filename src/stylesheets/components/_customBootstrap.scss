@@ -1,0 +1,126 @@
+$new-color-primary: #333bd6;
+$new-color-light: #f7f7f9;
+$new-color-link: #a3afbf;
+$new-color-success: #f59a40;
+$new-color-secondary: #333333;
+$new-color-info: #3b7c97;
+
+$primary: #333bd6;
+$secondary: #333333;
+
+$dark: #171a20;
+$clear-blue: #333bd6;
+$dark-grey: #27272d;
+$error-color: #d0021b;
+$lavender: #c9c8ca;
+$light-periwinkle: #d2d9ec;
+$cornflower: #7295f0;
+
+$pale-lilac: #eaeaec;
+$pale-grey: #f7f7f9;
+$light-grey: #bdbdbd;
+$charcoal-grey: #474a4f;
+$wisteria: #979797;
+$muted: #6c757d;
+
+
+// Array of colors from _variables.scss
+$theme-colors: (
+  primary: $primary,
+  light: $new-color-light,
+  link: $new-color-link,
+  success: $new-color-success,
+  error: $error-color,
+  secondary: $secondary,
+  info: $new-color-info,
+
+  clear-blue: $clear-blue,
+  dark: $dark,
+  dark-grey: $dark-grey,
+  charcoal-grey: $charcoal-grey,
+  wisteria: $wisteria,
+  lavender: $lavender,
+  pale-lilac: $pale-lilac,
+  pale-grey: $pale-grey,
+  light-grey: $light-grey,
+  light-periwinkle: $light-periwinkle,
+  cornflower: $cornflower,
+);
+
+$colors: (
+  "clear-blue": $clear-blue,
+  "dark": $dark,
+  "dark-grey": $dark-grey,
+  "charcoal-grey": $charcoal-grey,
+  "wisteria": $wisteria,
+  "lavender": $lavender,
+  "pale-lilac": $pale-lilac,
+  "pale-grey": $pale-grey,
+  "light-grey": $light-grey,
+  "light-periwinkle": $light-periwinkle,
+  "cornflower": $cornflower,
+) !default;
+
+$grid-columns: 12;
+$grid-gutter-width: 16px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1600px
+);
+
+$container-max-widths: (
+  //sm: 540px,
+  //md: 720px,
+  lg: 960px,
+  xl: 1280px,
+  xxl: 1360px,
+  xxxl: 1560px
+) !default;
+
+
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-medium:          500 !default;
+$font-weight-semi-bold:       600 !default;
+$font-weight-bold:            700 !default;
+
+.font-weight-medium  { font-weight: $font-weight-medium !important; }
+.font-weight-semi-bold  { font-weight: $font-weight-semi-bold !important; }
+
+.text-normalcase  { text-transform: none !important; }
+
+.text-underline{text-decoration: underline !important;}
+
+.d-table{
+  table-layout: fixed;
+  width: 100%;
+}
+.modal-backdrop.show {
+  opacity: .85 !important;
+}
+
+
+.slidingUpPanel{
+  &:before{
+    content:'';
+    position:absolute;
+    top:9px;
+    left:50%;
+    width:96px;
+    height:5px;
+    margin-left:-48px;
+    border-radius:3px;
+    background:#d8d8d8;
+  }
+  .slidingUpPanel-content{
+    height:0;
+    overflow:hidden;
+    transition: all 0.3s ease;
+  }
+}

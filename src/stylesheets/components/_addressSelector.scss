@@ -1,0 +1,33 @@
+.address-selector {
+  & .user-address {
+    cursor: pointer;
+
+    & .custom-radio .custom-control-label {
+      opacity: 0.8;
+      width: 100%;
+    }
+
+    & .custom-control-input:checked ~ .custom-control-label {
+      opacity: 1;
+    }
+
+    & .custom-radio .custom-control-label::before,
+    & .custom-radio .custom-control-label::after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    // & span {
+    //   color: $pale-grey;
+    //   display: none;
+    // }
+  }
+
+  & .user-address:hover {
+    background-color: $pale-grey;
+
+    & span {
+      display: block;
+    }
+  }
+}

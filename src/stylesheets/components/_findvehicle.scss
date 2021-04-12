@@ -1,0 +1,968 @@
+.inputPlate {
+  @include textos(listing_text);
+
+  border-radius: 3px;
+  border: 1px solid $lavender;
+  background: $white;
+  padding: 7px 10px;
+  text-align: center;
+  max-width: 160px;
+
+  color: $light-grey;
+
+  &:focus {
+    color: $secondary;
+  }
+}
+
+.rating-block {
+  & span {
+    display: inline-block;
+    vertical-align: top;
+
+    color: $pale-lilac;
+    font-size: 23px;
+    padding: 5px !important;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-left: 0;
+    }
+
+    &:hover {
+      color: $light-grey;
+    }
+    &.checked {
+      color: $clear-blue;
+    }
+  }
+}
+
+.collapse-title {
+  position: relative;
+
+  & i {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    z-index: 1;
+
+    transform: translateY(-50%);
+  }
+}
+.collapse-content {
+}
+.brandsExplorer {
+  background-color: #f7f7f9;
+
+  .nav-item {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    &:first-child {
+      padding-left: 0px;
+
+      & .nav-link::before {
+        display: none;
+      }
+    }
+
+    .nav-link {
+      position: relative;
+      color: $wisteria;
+      padding: 0 !important;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+      }
+
+      &::before {
+        height: 10px;
+        width: 2px;
+        top: 0px;
+        left: -10px;
+        background: $wisteria;
+      }
+      &::after {
+        content: "";
+        width: 100%;
+        height: 2px;
+        left: 0px;
+        bottom: -5px;
+        background: $clear-blue;
+
+        transform: scale3d(0, 1, 1);
+        transition: transform 0.1s;
+      }
+
+      &.active {
+        color: $clear-blue;
+        background: transparent;
+
+        &::after {
+          transform: scale3d(1, 1, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-duration: 0.3s;
+        }
+      }
+    }
+  }
+
+  .button-big {
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+}
+
+.buttons-icon {
+  button {
+    outline: none;
+
+    &:focus,
+    &.focus {
+      box-shadow: none;
+    }
+
+    &.actived {
+      i {
+        color: $clear-blue !important;
+      }
+    }
+  }
+
+  &.payment-type-icons {
+    button {
+      i {
+        width: 42px;
+        height: 42px;
+
+        font-size: 18px;
+        line-height: 22px;
+
+        padding: 10px;
+        border: 1px solid $pale-lilac;
+        background-color: $pale-lilac;
+        border-radius: 5px;
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+      &.actived {
+        i {
+          background-color: $light-periwinkle;
+          border-color: $clear-blue;
+        }
+      }
+    }
+  }
+
+  &.delivery-type-icons {
+    button {
+      font-size: 15px;
+      border: 1px solid $pale-lilac;
+      border-radius: 8px;
+
+      .button-title {
+        border-bottom: 1px solid $pale-lilac;
+        padding-bottom: 10px;
+      }
+
+      .button-text {
+        padding-top: 10px;
+      }
+
+      i {
+        font-size: 24px;
+        color: $pale-lilac;
+      }
+    }
+  }
+}
+
+.tabs-group {
+  & .btn-group {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+
+    & button {
+      position: relative;
+      flex: 1 1 auto;
+
+      color: $secondary;
+      @include textos(listing_small, null, null, 500);
+      text-transform: uppercase;
+      padding: 12px 10px;
+      text-align: center;
+      outline: 0 !important;
+      background-color: $pale-lilac;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: $clear-blue;
+
+        transform: scale3d(0, 1, 1);
+        transition: transform 0.1s;
+      }
+
+      &:hover {
+        background-color: rgba($primary, 0.1);
+      }
+      &.active {
+        color: $clear-blue;
+        font-weight: 500;
+
+        &::before {
+          transform: scale3d(1, 1, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-duration: 0.3s;
+        }
+      }
+    }
+  }
+}
+
+.tabs-group-big {
+  & .btn-group {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+
+    & button {
+      position: relative;
+      flex: 1 1 auto;
+
+      color: $wisteria;
+      @include textos(listing_text, null, null, 700);
+      padding: 20px 10px;
+      text-align: center;
+      outline: 0 !important;
+      background-color: $pale-grey;
+
+      &.active {
+        color: $white;
+        background-color: $clear-blue;
+      }
+    }
+  }
+}
+
+.tabs-group-fill {
+  & .btn-group {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+
+    & button {
+      position: relative;
+      flex: 1 1 auto;
+
+      color: $wisteria;
+      @include textos(listing_text, null, null, 400);
+      padding: 10px 10px;
+      text-align: center;
+      outline: 0 !important;
+      background-color: $pale-grey;
+
+      &.active {
+        color: $white;
+        background-color: #000;
+      }
+    }
+  }
+}
+
+.textWithLoading {
+  height: 45px;
+  background-color: #fff;
+  border: 1px #f7f7f9 solid;
+}
+
+.textWithLoading > span {
+  flex: 1 1 auto;
+  width: 1%;
+  align-self: center;
+  color: #a4a3a9;
+}
+
+.textWithLoading .input-group-append,
+.textWithLoading .input-group-text {
+  background-color: #fff;
+  border: 0;
+  border-left: 1px solid #eaeaec;
+}
+
+.findVehicleImg {
+  & h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 330px;
+    padding: 16px;
+
+    transform: translate(-50%, -50%);
+  }
+}
+.card {
+  border: 1px solid $pale-grey;
+}
+.slick-vehicles {
+  & .slick-list {
+    padding: 0 10%;
+
+    .slick-track {
+      display: flex;
+
+      .slick-slide {
+        height: inherit !important;
+
+        & .card-vehicle {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+.card-vehicle {
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &.card-vehicle-placeholder {
+    picture {
+      background-color: $light-grey;
+    }
+
+    picture,
+    .vehicle-price {
+      animation: placeHolderLoading 2s infinite linear forwards;
+    }
+  }
+
+  & picture {
+    background-color: $pale-grey;
+
+    img {
+      max-width: 100%;
+    }
+
+    .vehicle-labels {
+      position: absolute;
+      top: 11px;
+      left: 11px;
+      z-index: 1;
+    }
+
+    .vehicle-sticker {
+      position: absolute;
+      display: block;
+      bottom: 0;
+      right: 0;
+      font-size: 11px;
+      color: #fff;
+      padding: 8px 20px;
+      border-top-left-radius: 20px;
+      background-color: #333333;
+
+      &.sticker-flashsale {
+        z-index: 5;
+        right: 10px;
+        bottom: 10px;
+        padding: 0;
+        height: 27px;
+        width: 100px;
+        background-color: transparent;
+
+        & .flash-countdown {
+          overflow: hidden;
+          border-radius: 20px;
+
+          & .bolt {
+            position: absolute;
+            top: 0px;
+            left: 10px;
+            @include textos(listing_text, 18px, 27px, 500);
+          }
+
+          & .countdown-price,
+          & .countdown-time {
+            background-color: $primary;
+
+            p {
+              margin: 3px 0px 0px 24px;
+
+              & > span {
+                display: block;
+                color: #fff;
+                @include textos(listing_text, 13px, 11px, 800);
+
+                &.countdown-label {
+                  font-size: 10px;
+                  text-transform: uppercase;
+                  font-weight: normal;
+                  letter-spacing: -0.5px;
+                }
+              }
+            }
+          }
+
+          & .countdown-price {
+            letter-spacing: 1px;
+
+            p > span.countdown-label {
+              font-size: 9px;
+              letter-spacing: -1.1px;
+            }
+          }
+
+          & .countdown-time {
+            letter-spacing: -1px;
+
+            p {
+              margin: 2px 0px 3px 24px;
+            }
+          }
+        }
+      }
+    }
+
+    .card-action {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      color: $white;
+      font-size: 22px;
+      z-index: 5;
+      cursor: pointer;
+
+      &:hover,
+      &.fa-heart {
+        color: $error-color;
+      }
+    }
+  }
+  & figcaption {
+    & .inline-separators {
+      & span {
+        display: inline-block;
+        vertical-align: top;
+
+        &:after {
+          content: "|";
+          display: inline-block;
+          vertical-align: top;
+          margin: 0 5px;
+        }
+
+        &:last-child {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+
+    & .vehicle-price {
+      background: $pale-grey;
+      transition: all 0.3s ease;
+
+      &.campaign {
+        background: #ae8709;
+
+        & span.price_span {
+          color: $white;
+        }
+
+        & small {
+          color: $white;
+        }
+
+        & .old-price {
+          color: $white;
+        }
+      }
+
+      & span.price_span {
+        color: $clear-blue;
+        @include textos(texts, 20px, null, 700);
+        transition: all 0.3s ease;
+      }
+
+      & small {
+        color: $muted;
+      }
+
+      // & i {
+      //   position: absolute;
+      //   top: 0;
+      //   right: 0;
+      //   width: 50px;
+      //   height: 100%;
+      //   color: $white;
+      //   font-size: 20px;
+      //   line-height: 45px;
+      //   text-align: center;
+      // }
+
+      & .old-price {
+        color: $dark-grey;
+        text-decoration: line-through !important;
+      }
+    }
+  }
+
+  &.is-reserved {
+    & .vehicle-sticker {
+      background-color: #333bd6;
+    }
+  }
+
+  &.upselling {
+    & figcaption {
+      background-color: $dark-grey !important;
+
+      h3,
+      span.h6 {
+        color: $white !important;
+      }
+
+      & .inline-separators {
+        & span {
+          color: $white !important;
+        }
+      }
+      & .vehicle-price {
+        background: $clear-blue;
+
+        & span.price_span {
+          color: $white;
+        }
+        small {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &.saved {
+    & figcaption {
+      & .vehicle-price {
+        background: $clear-blue;
+
+        & span,
+        & small {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &.is-corporate {
+    &:hover {
+      .vehicle-price {
+        background-image: linear-gradient(83deg, #323aca, #0a0c32 100%);
+      }
+    }
+    & figcaption {
+      & .vehicle-price {
+        background-image: linear-gradient(83deg, #323aca, #0a0c32 100%);
+
+        & span.price_span {
+          color: $white;
+        }
+
+        & small {
+          color: $white;
+        }
+
+        & .old-price {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
+      0 16px 24px 2px rgba(0, 0, 0, 0.14);
+
+    & .vehicle-price {
+      background: $clear-blue;
+
+      & span.price_span {
+        color: $white;
+      }
+
+      & small {
+        color: $white;
+      }
+    }
+  }
+}
+
+.vehicle-label {
+  display: inline-block;
+  margin: 0 2px 2px 0;
+  padding: 5px 10px;
+  @include textos(listing_small, 11px, 1, null, 0);
+
+  border-radius: 50px;
+  z-index: 5;
+
+  & i {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-top: -2px;
+
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    font-size: 8px;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  &.new {
+    color: $primary;
+    background: $white;
+
+    & i {
+      color: $white;
+      background: $primary;
+    }
+  }
+  &.premium {
+    color: $white;
+    background: #393b72;
+
+    & i {
+      color: #393b72;
+      background: $white;
+    }
+  }
+  &.next {
+    color: $white;
+    background: #394f76;
+
+    & i {
+      color: #394f76;
+      background: $white;
+    }
+  }
+  &.campaign {
+    color: $white;
+    background: #ae8709;
+
+    & i {
+      color: #ae8709;
+      background: $white;
+    }
+  }
+}
+
+.vehicle-flashsale {
+  width: 262px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-align: right;
+
+  & .bolt {
+    color: yellow;
+    display: inline-block;
+    @include textos(listing_text, 18px, 27px, 500);
+  }
+
+  & .countdown-price,
+  & .countdown-time {
+    & span {
+      font-weight: bold;
+    }
+
+    & p {
+      text-transform: uppercase;
+      display: inline-block;
+      margin-left: 8px;
+    }
+
+    .countdown-label {
+      letter-spacing: -1px;
+      font-weight: normal;
+      margin-right: 0;
+      margin-left: 8px;
+    }
+  }
+
+  & .countdown-time {
+    & .countdown-label {
+      margin-left: 0;
+      margin-right: 8px;
+    }
+  }
+}
+
+.filters-toggle {
+  .filters-trigger {
+    display: block;
+    border: 1px solid $light-grey;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  .sticky-outer-wrapper.active {
+    .sticky-inner-wrapper {
+      left: 0;
+      width: 100% !important;
+      background: #fff;
+      z-index: 100;
+      padding: 0px 8px;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    }
+  }
+}
+
+.findvehicle-filters {
+  .card-title {
+    display: block;
+    max-width: 97%;
+
+    & i {
+      position: absolute;
+      top: 20px;
+      right: 15px;
+      font-size: 16px;
+    }
+  }
+
+  .custom-control {
+    min-height: unset;
+
+    & label {
+      width: 100%;
+    }
+  }
+}
+
+.findvehicle-listings {
+  .row-container {
+    min-height: 190px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+}
+
+.addressSelector {
+  position: relative;
+  padding: 24px;
+  padding-left: 64px;
+  border: 1px solid $pale-grey;
+  border-radius: 5px;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+
+    top: 24px;
+    left: 24px;
+  }
+  &::before {
+    width: 22px;
+    height: 22px;
+    background-color: transparent;
+
+    border: 1px solid $lavender;
+    box-shadow: none !important;
+  }
+  &::after {
+    margin-top: 4px;
+    margin-left: 4px;
+    background: $cornflower;
+    background-image: none !important;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.5s ease;
+  }
+
+  & span:nth-child(2n) {
+    max-width: 230px;
+  }
+
+  &.active {
+    border-color: $cornflower;
+
+    &::before {
+      border-color: $primary;
+      background: $primary;
+    }
+    &::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+.addressSelection > div {
+  padding-left: 24px;
+}
+
+.sticky-outer-wrapper {
+  position: relative;
+  display: block;
+  height: auto;
+}
+
+.info-trigger {
+  color: $success;
+  font-size: 16px;
+  vertical-align: top;
+}
+
+.checkout-payments {
+  .addressSelector {
+    &::before,
+    &::after {
+      top: 50%;
+      margin-top: 0;
+      transform: translateY(-50%);
+    }
+
+    & img {
+      width: auto;
+      height: 24px !important;
+    }
+  }
+  & .braintree-heading {
+    @include textos(listing_text, null, null, 500);
+  }
+  .braintree-upper-container:before {
+    display: none;
+  }
+  .braintree-option {
+    background: $white;
+    border-color: $light-grey;
+  }
+  .braintree-large-button {
+    @include textos(listing_text, null, null, 500);
+    background: $pale-grey;
+  }
+  & svg {
+    max-width: 50px;
+    height: 100% !important;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .findVehicleImg span.has_bg {
+    position: relative;
+    height: calc(100vh - 70px);
+  }
+  .inline-childs {
+    & > div {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .findvehicle-filters {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    left: -100%;
+    transition: all 0.3s ease;
+    z-index: 310;
+
+    background-color: $white;
+
+    & .intro {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      z-index: 5;
+
+      transition: all 0.3s ease;
+    }
+
+    &.active,
+    &.active .intro {
+      left: 0px;
+    }
+
+    & .sticky-inner-wrapper {
+      transform: none !important;
+    }
+  }
+}
+
+.corporate-price {
+  height: 32px;
+
+  .discount-request {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    padding: 0 15px;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .discount-success {
+    position: absolute;
+    line-height: 32px;
+    transform: translateX(150%);
+    transition: transform 0.2s ease;
+  }
+
+  &.discount-request-success {
+    .discount-request {
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .discount-success {
+      transition-delay: 200ms;
+      transform: translateX(0%);
+    }
+  }
+}

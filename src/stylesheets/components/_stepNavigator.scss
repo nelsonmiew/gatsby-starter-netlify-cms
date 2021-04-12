@@ -1,0 +1,45 @@
+.step-navigator {
+  position: relative;
+  top: -40px;
+  border-radius: 10px;
+
+  & .step-block {
+    position: relative;
+    margin-bottom: 26px;
+    text-align: center;
+    flex: 1;
+  }
+
+  & .step-block:before {
+    content: "";
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: #d2d9ec;
+  }
+
+  & .step-block:first-child:before {
+    left: auto;
+    right: 0;
+    width: 50%;
+  }
+
+  & .step-block:last-child::before {
+    width: 50%;
+  }
+
+  & .step-label::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    bottom: -18px;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background: $primary;
+    border-radius: 12px;
+    transform: translateX(-50%);
+  }
+}

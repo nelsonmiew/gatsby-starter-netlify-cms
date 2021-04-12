@@ -19,7 +19,7 @@ export default class ProductList extends Component {
 
     const category = "";
     const categoryPath = "";
-
+    
 
     return (
       <div>
@@ -42,6 +42,7 @@ export default class ProductList extends Component {
         }
         `}
           render={(data) => {
+            console.log("data", data);
             const catalogProducts = (data && data.bmcarApi && data.bmcarApi.products.slice(0, 10)) || [];
             return (
               <div className="columns is-multiline">
@@ -54,7 +55,6 @@ export default class ProductList extends Component {
                             className={"column is-4 " + (i % 2 === 1 ? "pl-1 pl-xl-2" : "pr-1 pr-xl-2")}
                             key={"product-" + product.id}
                           >
-
                             <CardProduct
                               className="h-100"
                               productId={product.id}
@@ -71,12 +71,13 @@ export default class ProductList extends Component {
                               mainCategory={product.mainCategory}
                               category={category}
                               categoryPath={categoryPath}
-                            />
+                            /> 
                           </div>
                         </>
                       )}
                     </Fragment>
                   ))}
+                  <div></div>
               </div>
             )
           }}

@@ -5,6 +5,19 @@ const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const slash = require(`slash`);
 const API_URL = "https://bmcar-api.out.miewstudio.com/";
 
+
+const pathsToAddIds = [
+  // { path: "/login/accountactivation/" },
+  // { path: "/login/resetpassword/" },
+  // { path: "/account/" },
+  // { path: "/account/encomenda/" },
+  // { path: "/account/encomenda-acessorios/" },
+  { path: "/loja/" },
+  //{ path: "/vehicle/" },
+  //{ path: "/findvehicle/vehicle/" },
+];
+
+
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
@@ -217,6 +230,90 @@ exports.createPages = async ({ actions, graphql }) => {
 
     const { bmcarApi } = result.data;
     const productPage = path.resolve(`./src/pagesCustom/product/index.js`);
+    
+    const storePage = path.resolve(`./src/pagesCustom/loja/index.js`);
+    const categoryPage = path.resolve(`./src/pagesCustom/category/index.js`);
+    
+    const bfs = function (tree, key, collection) {
+      if (!tree[key] || tree[key].length === 0) return;
+      for (let i = 0; i < tree[key].length; i++) {
+        let child = tree[key][i];
+        collection.push(child);
+        bfs(child, key, collection);
+      }
+    
+      return;
+    };
+
+    const categoriesFlat = [];
+
+    bfs(bmcarApi, "categories", categoriesFlat);
+   
+    categoriesFlat.forEach((category) => {
+      const categoryProducts = bmcarApi.products
+        .filter((p) => (category.level > 0 ? p.categories.some((pc) => pc === category.id) : true))
+        .map((product) => {
+          return {
+            id: product.id,
+            name: product.name,
+            slug: product.slug,
+            price: product.price,
+            priceOriginal: product.priceOriginal,
+            discount: product.discount,
+            isDiscountPercentage: product.isDiscountPercentage,
+            imageProductUrl: product.imageProductUrl,
+            isFeatured: product.isFeatured,
+            hasStock: product.hasStock,
+            categories: product.categories,
+            mainCategory: product.mainCategory,
+            categoryPath: product.categoryPath,
+            publishedDate: product.publishedDate,
+            attributes: product.attributes,
+          };
+        });
+        
+      const categoryDestaques = [];// allWpDestaque.nodes.filter((d) => d.category && d.category.indexOf(category.id) >= 0);
+  
+      const pageObj = {
+        path: category.level > 0 ? `/loja/${category.slug}/` : `/loja/`,
+        component: category.level > 0 ? slash(categoryPage) : slash(storePage),
+        context: {
+          name: category.name,
+          category: {
+            id: category.id,
+            slug: category.slug,
+            name: category.name,
+            level: category.level,
+            seoTitle: category.seoTitle,
+            seoDescription: category.seoDescription,
+          },
+          menu: bmcarApi.categories[0].categories,
+          childCategories:
+            category.categories &&
+            category.categories.map((cat) => {
+              return { id: cat.id, name: cat.name, slug: cat.slug, numberProducts: cat.numberProducts };
+            }),
+          categoryPath: [
+            ...categoriesFlat
+              .filter((cat) => category.path.some((c) => cat.id === c))
+              .map((cat) => {
+                return { slug: cat.slug, name: cat.name };
+              }),
+            { slug: category.slug, name: category.name },
+          ],
+          products: categoryProducts,
+          filters: category.attributes,
+          destaques: categoryDestaques,
+        },
+      };
+  
+      if (category.level === 0) {
+        pageObj.matchPath = `/loja/*`;
+      }
+  
+      createPage(pageObj);
+    });
+
     bmcarApi.products.forEach((product) => {
       createPage({
         path: `/${product.mainCategory.slugSimple}/${product.slug}/`,
@@ -227,8 +324,33 @@ exports.createPages = async ({ actions, graphql }) => {
         },
       });
     });
+
+
   })
 }
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+  const pageWithIds = pathsToAddIds.find((p) => p.path === page.path);
+  deletePage(page);
+
+  if (pageWithIds) {
+    createPage({
+      ...page,
+      matchPath: page.path + (pageWithIds.match ? pageWithIds.match : "*/"),
+      context: {
+        ...page.context,
+      },
+    });
+  } else {
+    createPage({
+      ...page,
+      context: {
+        ...page.context,
+      },
+    });
+  }
+};
 
 exports.onCreateNode =async  ({ node,  actions,getCache, getNode, createNodeId, store }) => {
   const { createNodeField, createNode } = actions;

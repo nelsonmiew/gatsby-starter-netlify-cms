@@ -1,0 +1,133 @@
+$globalMedia: 350;
+
+/*TYPOGRAPHY*/
+$typography: (
+  title: (
+	size:64px,
+	height:1.2,
+	weight:700,
+	range:25,
+  ),
+  subtitle: (
+	size:40px,
+	height:1.2,
+	weight:700,
+	range:16,
+  ),
+  texts: (
+	size:18px,
+	height:1.6,
+	weight:400,
+	range:3,
+  ),
+  listing_title: (
+	size:30px,
+	height:1.2,
+	weight:700,
+	range:7,
+  ),
+  listing_subtitle: (
+	size:24px,
+	height:1.4,
+	weight:400,
+	range:2,
+  ),
+  listing_text: (
+	size:15px,
+	height:1.6,
+	weight:400,
+	range:2,
+  ),
+  listing_small: (
+	size:13px,
+	height:1.6,
+	weight:400,
+	range:0,
+  )
+);
+
+@mixin textos($tipo, $size:null, $height: null, $weight: null, $range:0){
+	$typo: map-get($typography, $tipo);
+
+	@if($size == null){
+		$size: map-get($typo, 'size');
+	}
+	@if($height == null){
+		$height: map-get($typo, 'height');
+	}
+	@if($weight == null){
+		$weight: map-get($typo, 'weight');
+	}
+	@if($range == 0){
+		$range: map-get($typo, 'range');
+	}
+	
+	font-size:$size;
+	
+	@if $range>0{
+		font-size: -webkit-calc(( #{$size} - #{$range}px ) + #{$range} * (100vw - #{$globalMedia}px) / (1920 - #{$globalMedia}));
+		font-size: -moz-calc(( #{$size} - #{$range}px ) + #{$range} * (100vw - #{$globalMedia}px) / (1920 - #{$globalMedia}));
+		font-size: calc(( #{$size} - #{$range}px ) + #{$range} * (100vw - #{$globalMedia}px) / (1920 - #{$globalMedia}));
+	}
+	line-height:$height;
+	font-weight:$weight;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+	margin:0;
+	position: relative;
+  z-index: 1;
+}
+
+.h1,
+.title{	
+	@include textos(title);
+}
+
+.h2,
+.subtitle{	
+	@include textos(subtitle);
+}
+
+p,
+li,
+.texts{	
+	@include textos(texts);
+}
+
+.h3,
+.listing_title{
+	@include textos(listing_title);
+}
+
+.h4,
+.listing_subtitle{	
+	@include textos(listing_subtitle);
+}
+
+.h5,
+.listing_text{	
+	@include textos(listing_text);
+}
+
+.h6,
+.listing_small{	
+	@include textos(listing_small);
+}
+small{
+	@include textos(listing_small, 11px, null, null, 0);
+}
+
+.extraBold{
+	font-weight: 900 !important;
+}
+.no-spacing,
+.no-spacing span{
+	letter-spacing: 0 !important;
+}
+.text-ellipsis{
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

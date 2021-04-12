@@ -1,0 +1,95 @@
+.flash-countdown {
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+
+  .flip-countdown {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+
+    .countdown-price,
+    .countdown-time {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+
+    & .countdown-price {
+      z-index: 2;
+      transform: rotateX(0deg);
+      animation: flip 8s ease-in-out infinite;
+    }
+
+    & .countdown-time {
+      transform: rotateX(180deg);
+      animation: flip-invert 8s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes flip {
+  0%,
+  45% {
+    transform: rotateX(0deg);
+  }
+  50%,
+  95% {
+    transform: rotateX(180deg);
+  }
+}
+
+@keyframes flip-invert {
+  0%,
+  45% {
+    transform: rotateX(180deg);
+  }
+  50%,
+  95% {
+    transform: rotateX(0deg);
+  }
+}
+
+.checkoutResume {
+  & .vehicle-flashsale {
+    top: 0;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .checkoutResume {
+    & .vehicle-flashsale {
+      span {
+        line-height: 1;
+        display: block;
+        margin: 0 !important;
+
+        &.countdown-label {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .checkoutResume {
+    & .vehicle-flashsale {
+      span {
+        line-height: 1;
+        display: block;
+        margin: 0 !important;
+        
+        &.countdown-label {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}

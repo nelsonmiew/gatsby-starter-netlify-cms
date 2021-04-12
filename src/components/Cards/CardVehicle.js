@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "gatsby";
 import { ImgPlaceholder } from "components/GlobalComponents";
-import { config } from "services/config";
+import { config } from "components/GlobalConstants";
 import userActions from "src/redux/reducers/account/account.actions";
 import {
   defaultCardImg,
@@ -495,7 +495,7 @@ const mapStateToProps = (state, props) => {
   const { vehicleId, isNew, isDemonstration, brandName, taeg } = props;
 
   return {
-    isFavourite: vehicleId && account.favoritesIds && account.favoritesIds.indexOf(vehicleId) >= 0,
+    isFavourite:false,// vehicleId && account.favoritesIds && account.favoritesIds.indexOf(vehicleId) >= 0,
     financeTypes: financeType.constants,
     vehicleLabel:
       isDemonstration === true

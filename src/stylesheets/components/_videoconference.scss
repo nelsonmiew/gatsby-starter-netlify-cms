@@ -1,0 +1,333 @@
+.videoconference-container {
+  position: relative;
+  background: #27272d;
+  color: #fff;
+
+  & .calling-message {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+  }
+
+  & .bg-videoconference {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 25%;
+      height: calc(25vw);
+      left: 50%;
+      top: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #202129;
+    }
+
+    .wave {
+      position: absolute;
+      width: 40%;
+      height: calc(40vw);
+      left: 50%;
+      top: 50%;
+      background-image: radial-gradient(
+        circle,
+        rgba(48, 35, 174, 0.25) 0%,
+        rgba(83, 160, 253, 0.25) 50%,
+        rgba(180, 236, 81, 0.25) 100%
+      );
+      border: 1px solid #4c4c4c;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0.1, 0.1);
+      opacity: 0;
+      animation: pulse 3000ms ease-out infinite;
+
+      &:nth-of-type(2) {
+        animation-delay: 600ms;
+      }
+
+      &:nth-of-type(3) {
+        animation-delay: 1200ms;
+      }
+    }
+  }
+
+  & .preview-my-camera {
+    position: fixed;
+    background-color: #000;
+    border: 1px solid #4c4c4c;
+    top: calc(5vh + 70px);
+    right: 5%;
+    width: 30%;
+    height: calc(30vw * 0.75); //0.5625 16:9
+    overflow: hidden;
+    z-index: 10;
+
+    & #local-media {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    & .my-media-status {
+      position: absolute;
+      display: block;
+      right: 0px;
+      bottom: 0px;
+      opacity: 0.7;
+      z-index: 2;
+
+      & i {
+        margin: 0 10px 0 0;
+        @include textos(listing_text);
+      }
+    }
+
+    & video {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  & .remote-cameras-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%; //calc(100vw * 0.75);
+    max-height: calc(100vh - 90px);
+    background-color: #000;
+    border: 1px solid #4c4c4c;
+    transform: translate(-50%, -50%);
+
+    & .remote-cameras {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
+
+      & > div {
+        position: relative;
+        display: flex;
+        width: 0;
+        height: auto;
+        max-width: 100%;
+        min-height: 260px;
+        max-height: 100%;
+        flex: 1 1;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0;
+
+        & span {
+          position: absolute;
+          top: 16px;
+          left: 8px;
+          opacity: 0.7;
+          @include textos(listing_text);
+          line-height: 20px;
+          min-height: 32px;
+          padding: 8px 16px 8px 40px;
+          background-color: #434343;
+          border-radius: 6px;
+          font-weight: bold;
+          z-index: 2;
+
+          &:after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 16px;
+            width: 14px;
+            height: 14px;
+            background-color: #78ff00;
+            border-radius: 50%;
+          }
+        }
+
+        & video {
+          width: 0;
+          height: auto;
+          min-height: 100%;
+          flex: 1 1;
+          flex-grow: 1;
+          flex-shrink: 1;
+          flex-basis: 0;
+        }
+      }
+    }
+  }
+
+  & .videoconference-action-bar {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 1;
+    padding: 40px;
+    transition: opacity 0.2s ease-in-out;
+
+    &.in-call {
+      opacity: 0.3;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    button {
+      background-color: #666666;
+      color: $pale-lilac;
+      border: solid 1px #979797;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      padding: 0;
+      margin: 0 10px;
+      @include textos(listing_subtitle);
+
+      &:hover {
+        background-color: $charcoal-grey;
+
+        & i.slash:after {
+          border-left: 3px $charcoal-grey solid;
+        }
+      }
+
+      &.active {
+        background-color: $light;
+        color: $dark-grey;
+
+        &:hover {
+          background-color: #d0d0d0;
+        }
+      }
+    }
+  }
+
+  & i.slash {
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 5px;
+      height: 130%;
+      border-radius: 0.5px;
+      background-color: $pale-lilac;
+      border-left: 3px #666666 solid;
+      transition: all 0.3s ease !important;
+      transition-property: all !important;
+      transition-duration: 0.3s !important;
+      transition-timing-function: ease !important;
+      transition-delay: 0s !important;
+    }
+  }
+
+  .exclamation-point {
+    display: inline-block;
+    position: relative;
+    color: $warning;
+    font-size: 40px;
+    line-height: 70px;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 4px solid $warning;
+    }
+  }
+}
+
+@function grid-value($key) {
+  @return map-get($grid-breakpoints, $key);
+}
+
+@media only screen and (max-width: grid-value(sm)) and (orientation: landscape) {
+  .app-header {
+    display: none !important;
+  }
+
+  .videoconference-container {
+    & .preview-my-camera {
+      top: 10%;
+      width: 20%;
+      height: calc(20vw * 0.75); //0.5625 16:9
+    }
+    & .remote-cameras-container {
+      max-height: 95vh;
+    }
+  }
+}
+
+@media only screen and (min-width: grid-value(lg)) {
+  .videoconference-container {
+    & .preview-my-camera {
+      width: 20%;
+      height: calc(20vw * 0.75); //0.5625 16:9
+    }
+
+    & .remote-cameras-container {
+      width: 80%;
+      height: calc(80vw * 0.75);
+      max-height: calc(100vh - 90px);
+    }
+
+    .exclamation-point {
+      font-size: 80px;
+      line-height: 100px;
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+@media only screen and (min-width: grid-value(xl)) {
+  .videoconference-container {
+    & .preview-my-camera {
+      width: 15%;
+      height: calc(15vw * 0.75); //0.5625 16:9
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.1, 0.1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2, 1.2);
+    opacity: 0;
+  }
+}

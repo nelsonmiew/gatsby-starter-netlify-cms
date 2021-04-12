@@ -1,0 +1,187 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+@import "customBootstrap";
+
+//@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/reboot";
+@import "../../../node_modules/bootstrap/scss/type";
+@import "../../../node_modules/bootstrap/scss/grid";
+@import "../../../node_modules/bootstrap/scss/tables";
+@import "../../../node_modules/bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/transitions";
+@import "../../../node_modules/bootstrap/scss/dropdown";
+@import "../../../node_modules/bootstrap/scss/progress";
+@import "../../../node_modules/bootstrap/scss/button-group";
+@import "../../../node_modules/bootstrap/scss/custom-forms";
+@import "../../../node_modules/bootstrap/scss/card";
+@import "../../../node_modules/bootstrap/scss/alert";
+@import "../../../node_modules/bootstrap/scss/list-group";
+@import "../../../node_modules/bootstrap/scss/modal";
+@import "../../../node_modules/bootstrap/scss/nav";
+@import "../../../node_modules/bootstrap/scss/utilities";
+
+//@import "../../../node_modules/react-widgets/dist/css/react-widgets";
+// $font-path: '../../../node_modules/react-widgets/lib/fonts';
+// $img-path: '../../../node_modules/react-widgets/lib/img';
+// // Starts here
+// $multiselect-tag-gutter-fallback: calc($input-height * $multiselect-gutter-pt) !default;
+// $multiselect-tag-gutter:          calc($multiselect-tag-gutter-fallback - $input-border-width) !default;
+// $multiselect-tag-height:          calc($input-height * $multiselect-tag-height-pt) !default;
+// // Ends here
+// @import "../../../node_modules/react-widgets/lib/scss/variables";
+// @import "../../../node_modules/react-widgets/lib/scss/dropdown-list";
+
+$space_multiplier: 8;
+$spacers_adapt: (
+  0: (
+		size: 0,
+		range: 0,
+  ),
+  1: (
+		size: 8,
+		range: 0,
+  ),
+  2: (
+		size: 12,
+		range: 0,
+	),
+	3:(
+		size: 16,
+		range:0,
+  ),
+  4: (
+		size: 24,
+		range:4,
+  ),
+  5: (
+		size: 32,
+		range:5,
+  ),
+  6: (
+		size: 40,
+		range:10,
+  ),
+  7: (
+		size: 62,
+		range:20,
+  ),
+  8: (
+		size: 80,
+		range:38,
+  ),
+  9: (
+		size: 120,
+		range:42,
+  ),
+  10: (
+		size: 160,
+		range:80,
+  ),
+  11: (
+		size: 220,
+		range:100,
+  ),
+  12: (
+		size: 260,
+		range:120,
+  ),
+  13: (
+		size: 300,
+		range:140,
+  ),
+  14: (
+		size: 300,
+		range:140,
+  ),
+  15: (
+		size: 360,
+		range:180,
+  ),
+);
+
+
+@import "typography";
+
+@import "forms";
+
+@import "buttons";
+
+@import "findvehicle";
+
+@import "flashSales";
+
+@import "footer";
+
+@import "header";
+
+@import "loading";
+
+@import "account";
+
+@import "login";
+
+@import "pageTitle";
+
+@import "cardSlider";
+
+@import "rangeSlider";
+
+@import "stepNavigator";
+
+@import "formComponents";
+
+@import "vehicleGallery";
+
+@import "modal";
+
+@import "addressSelector";
+
+@import "tabs";
+
+@import "margins";
+
+@import "wordpress";
+
+@import "videoconference";
+
+@import "shoppingCart";
+
+@import "catalog";
+
+@import "product";
+
+//add new breakpoint to bootstrap
+$list: (
+  10: 10%,
+  15: 15%,
+  20: 20%,
+  30: 30%,
+  35: 35%,
+  40: 40%,
+  60: 60%,
+  65: 65%,
+  70: 70%,
+  80: 80%,
+  85: 85%,
+  90: 95%
+);
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    @each $prop, $abbrev in (width: w, height: h) {
+      $new-list: map-merge($list, $sizes);
+      @each $size, $length in $new-list {
+        .#{$abbrev}#{$infix}-#{$size} {
+          #{$prop}: $length !important;
+        }
+      }
+    }
+  }
+}
+
+

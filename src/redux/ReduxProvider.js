@@ -3,4 +3,4 @@ import { Provider } from "react-redux";
 // import { createStore as reduxCreateStore } from "redux";
 import { store } from "./configStore";
 
-export default ({ children }) => <Provider store={store}>{{children}}</Provider>;
+export default ({ children }) => <Provider store={store}>{children}</Provider>;

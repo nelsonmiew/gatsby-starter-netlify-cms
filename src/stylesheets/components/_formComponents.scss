@@ -1,0 +1,35 @@
+.dropzone {
+  padding: 15px;
+  border: 2px dashed $cornflower;
+  border-radius: 4px;
+  height: 150px;
+  
+  .dropzone-container {
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    img {
+      max-width: 150px;
+      height: auto;
+    }
+  }
+}
+
+.rw-multiselect{
+  .rw-multiselect-taglist{
+    vertical-align: top;
+  }
+  .rw-multiselect-tag{
+    color: $white;
+    background: $primary;
+
+  }
+  .rw-multiselect-tag-btn{
+    margin-top: -2px;
+  }
+  .rw-list-empty{
+    @include textos(listing_text);
+  }
+}

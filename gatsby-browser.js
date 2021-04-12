@@ -12,7 +12,7 @@ import $ from 'jquery';
 //import "bootstrap/dist/js/bootstrap.min.js";
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-widgets/dist/css/react-widgets.css";
-// import "./src/stylesheets/main.css";
+import "./src/stylesheets/main.css";
 // import "./src/stylesheets/modules/slick.css";
 window.jQuery = $;
 window.$ = $;

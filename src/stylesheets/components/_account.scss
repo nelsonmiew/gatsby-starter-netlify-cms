@@ -1,0 +1,74 @@
+.react-bootstrap-table{
+  & tbody tr{
+    
+    transition: all 0.3s ease;
+    &:hover{
+      box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 
+                  0 6px 30px 5px rgba(0, 0, 0, 0.12), 
+                  0 16px 24px 2px rgba(0, 0, 0, 0.14);
+    }
+  }
+  & th{
+    color:$charcoal-grey;
+    @include textos(listing_small, null, null, 700);
+    text-transform:uppercase;
+    border-top:0;
+  }
+  & td{
+    @include textos(listing_text);
+    border-top:0;
+  }
+
+  @media only screen and (max-width: 768px) { 
+    &.table-responsive{
+      & thead{
+        display: none !important;
+      }
+      & tr{
+        display: block;
+        padding: 15px 0;
+
+        & td{
+          display: block;
+          padding: 4px 10px;
+
+          &:before{
+            content:attr(data-title);
+            display: inline-block;
+            vertical-align: middle;
+
+            margin-right: 5px;
+            margin-top: -2px;
+
+            @include textos(listing_text,null, null, 700);
+          }
+        }
+      }
+    }  
+  }
+}
+
+.loginForm,
+.checkoutResume,
+.account-order{
+    & a:not(.button-big){
+        color:$primary !important;
+
+        &:hover{
+            color:$secondary !important;
+        }
+    }
+}
+
+.order-resume-modal{
+  .help-section{
+    & a{
+      &:hover{
+        & i,
+        & span{
+          color:$light-grey !important;
+        }
+      }
+    } 
+  }
+}

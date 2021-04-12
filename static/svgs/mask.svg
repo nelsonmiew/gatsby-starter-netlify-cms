@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1442px" height="275px" viewBox="0 0 1442 275" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Combined Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,291.209085 L2.55795385e-13,242.71367 C4.2310439e-13,213.105099 22.6695797,188.426566 52.1717362,185.918531 L1374.26827,73.5245664 C1412.56932,70.2685211 1442,38.2297232 1442,-0.209474282 L1442,-23.4572061 L1442,-508.790915 L0,-508.790915 L4.8028248e-13,156.344951 L0,291.209085 Z M0,-9.79091489 L1442,-9.79091489 L1442,274.209085 L0,274.209085" id="path-1"></path>
+    </defs>
+    <g id="Homepage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#FFFFFF" xlink:href="#path-1"></use>
+    </g>
+</svg>

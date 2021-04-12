@@ -1,0 +1,40 @@
+.tabs{
+  padding: 15px 0;
+  border:0;
+
+  & .nav-item{
+    margin:0;
+    margin-right:24px;
+    cursor: pointer;
+
+    & .nav-link{
+      position:relative;
+      border:0;
+      padding:0;
+      padding-right:60px;
+      padding-bottom: 6px;
+      color:$wisteria;
+      line-height: 1.2;
+      border-bottom:4px solid $wisteria;
+
+      &:after{
+        content:'';
+        position:absolute;
+        left:0;
+        bottom:-4px;
+        width:0;
+        height:4px;
+        background:$primary;
+        transition:width 0.3s ease;
+      }
+
+      &.active{
+        color:$secondary;
+
+        &:after{
+          width:100%;
+        }
+      }
+    }
+  }
+}
